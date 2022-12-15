@@ -29,20 +29,29 @@ void PrintMatrix(int[,] matrix)
 
 int[,] CreateMatrixC(int[,] arrayA, int[,] arrayB, int rows, int columns)
 {
-    int[,] matrix = new int[rows, columns];
-    matrix[0,0] = arrayA[0,0] * arrayB[0,0] + arrayA[0,1] * arrayB[1,0]; 
-    matrix[0,1] = arrayA[0,0] * arrayB[0,1] + arrayA[0,1] * arrayB[1,1];
-    matrix[1,0] = arrayA[1,0] * arrayB[0,0] + arrayA[1,1] * arrayB[1,0];
-    matrix[1,1] = arrayA[1,0] * arrayB[0,1] + arrayA[1,1] * arrayB[1,1];
-    return matrix;
+    int[,] resultMatrix = new int[rows, columns];
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+        int sum = 0;
+        for (int k = 0; k < columns; k++)
+        {
+            sum += arrayA[i,k] * arrayB[k,j];
+        }
+        resultMatrix[i,j] = sum;
+        }
+    }
+    return resultMatrix;
 }
 
 Console.WriteLine();
-int[,] arreyA = CreateMatrixRndInt(2, 2, 1, 9);
+int[,] arreyA = CreateMatrixRndInt(3, 3, 1, 9);
 PrintMatrix(arreyA);
 Console.WriteLine("    *");
-int[,] arreyB = CreateMatrixRndInt(2, 2, 1, 9);
+int[,] arreyB = CreateMatrixRndInt(3, 3, 1, 9);
 PrintMatrix(arreyB);
 Console.WriteLine("    =");
-int[,] arreyC =  CreateMatrixC(arreyA, arreyB, 2,2);
+int[,] arreyC =  CreateMatrixC(arreyA, arreyB, 3, 3);
 PrintMatrix(arreyC);
+
