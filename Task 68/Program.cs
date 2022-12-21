@@ -1,8 +1,8 @@
 ﻿Console.WriteLine("Введите начальное число M:");
-int numberM = int.Parse(Console.ReadLine());
+int numberM = Convert.ToInt32(Console.ReadLine());
 
 Console.WriteLine("Введите начальное число N:");
-int numberN = int.Parse(Console.ReadLine());
+int numberN = Convert.ToInt32(Console.ReadLine());
 
 int Ackermann(int numberM, int numberN)
 {
